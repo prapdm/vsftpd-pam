@@ -32,7 +32,12 @@ RUN echo "local_enable=YES" >> /etc/vsftpd/vsftpd.conf \
   && echo "passwd_chroot_enable=yes" >> /etc/vsftpd/vsftpd.conf \
   && echo "pasv_enable=Yes" >> /etc/vsftpd/vsftpd.conf \
   && echo "listen_ipv6=NO" >> /etc/vsftpd/vsftpd.conf \
-  && echo "seccomp_sandbox=NO" >> /etc/vsftpd/vsftpd.conf \
+  && echo "nopriv_user=www-data" >> /etc/vsftpd/vsftpd.conf \
+  && echo "ftp_username=www-data" >> /etc/vsftpd/vsftpd.conf \
+  && echo "guest_username=www-data" >> /etc/vsftpd/vsftpd.conf \
+  && echo "chown_username=www-data" >> /etc/vsftpd/vsftpd.conf \
+  && echo "chown_uploads=YES" >> /etc/vsftpd/vsftpd.conf \
+  && echo "chown_upload_mode=0600" >> /etc/vsftpd/vsftpd.conf \ 
   && echo "user_config_dir=/conf/vsftpd/users_config" >> /etc/vsftpd/vsftpd.conf \
   && sed -i "s/anonymous_enable=YES/anonymous_enable=NO/" /etc/vsftpd/vsftpd.conf  
   
