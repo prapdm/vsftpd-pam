@@ -37,7 +37,7 @@ RUN echo "local_enable=YES" >> /etc/vsftpd/vsftpd.conf \
   && echo "guest_username=www-data" >> /etc/vsftpd/vsftpd.conf \
   && echo "chown_username=www-data" >> /etc/vsftpd/vsftpd.conf \
   && echo "chown_uploads=YES" >> /etc/vsftpd/vsftpd.conf \
-  && echo "chown_uploads=YES" >> /etc/vsftpd/vsftpd.conf \  
+  && echo "chown_upload_mode=0600" >> /etc/vsftpd/vsftpd.conf \  
   && echo "seccomp_sandbox=NO" >> /etc/vsftpd/vsftpd.conf \ 
   && echo "user_config_dir=/conf/vsftpd/users_config" >> /etc/vsftpd/vsftpd.conf \
   && sed -i "s/anonymous_enable=YES/anonymous_enable=NO/" /etc/vsftpd/vsftpd.conf  
@@ -55,8 +55,9 @@ RUN \
   cd .. && \
   rm -rvf pam && \
   mkdir -p /home/www-data && \
-  addgroup -g 433 -S www-data && \
-  adduser -u 431 -S -D -G www-data -h /home/www-data -s /sbin/nologin www-data && \
+  #82 is the standard uid/gid for "www-data" in Alpine for php-fpm. Php need write permision, so let's give them 
+  addgroup -g 82 -S www-data && \
+  adduser -u 82 -S -D -G www-data -h /home/www-data -s /sbin/nologin www-data && \
   chown -R www-data:www-data /home/www-data && \
   mkdir -p /var/run/vsftpd/empty && \
   mkdir -p /home/vsftpd && \
