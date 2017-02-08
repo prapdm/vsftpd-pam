@@ -26,7 +26,7 @@ services:
      - "35000:21"
      - "21100-21110:21100-21110"
    volumes:
-    - some-volume:/home/user/
+    - some-volume:/home/vsftpd/user
     - /home/ftp/logs/:/var/log/
    environment:
     - FTP_USER=user
