@@ -1,7 +1,7 @@
 # vsftpd-pam
 Docker image of vsftpd server with pam based on Alpine 3.4 
 
-##Exemple usage
+##Exemple run
 ```
 docker run \
   --name vsftpd \
@@ -16,7 +16,7 @@ docker run \
   avenus/vsftpd-pam
 ```
 
-##Exemple usage in compose file
+##Exemple run with compose file
 ```
 version: '3'
 services:
@@ -35,6 +35,18 @@ services:
     - PASV_MIN=21100
     - PASV_MAX=21110
 ```
+
+# Working in container
+```
+docker exec -it id_or_name sh
+```
+or
+
+```
+docker exec -it id_or_name comand
+```
+
+
 ##Add virtual user
 Let's add **seconduser** which have access to **/home/vsftpd/seconduser/**
 
