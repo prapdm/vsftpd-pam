@@ -48,6 +48,10 @@ RUN \
   make install && \
   cd .. && \
   rm -rvf pam && \
+  mkdir -p /home/www-data && \
+  addgroup -g 433 -S www-data && \
+  adduser -u 431 -S -D -G www-data -h /home/www-data -s /sbin/nologin www-data && \
+  chown -R www-data:www-data /home/www-data && \
   mkdir -p /var/run/vsftpd/empty && \
   mkdir -p /home/vsftpd && \
   mkdir -p /conf/vsftpd && \
