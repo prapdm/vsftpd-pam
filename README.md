@@ -42,7 +42,6 @@ Let's add **seconduser** which have access to **/home/vsftpd/seconduser/**
 echo "seconduser:$(openssl passwd -1 password)" >> /conf/vsftpd/virtual_users
 mkdir /home/vsftpd/seconduser/
 chown -R ftp:ftp /var/vsftpd/seconduser
-chmod -R 755 /home/vsftpd/seconduser
 ```
 ##Add new virtual user with different directory 
 Let's add **anotheruser** which have access to **/home/vsftpd/anotheruser/subdomain.com**
@@ -51,7 +50,6 @@ echo "anotheruser:$(openssl passwd -1 password)" >> /conf/vsftpd/virtual_users
 mkdir /home/vsftpd/anotheruser/
 mkdir /home/vsftpd/anotheruser/subdomain.com
 chown -R ftp:ftp /var/vsftpd/anotheruser
-chmod -R 755 /home/vsftpd/anotheruser
 echo "local_root=/home/vsftpd/anotheruser/subdomain.com" >> /conf/vsftpd/users_config/anotheruser
 ```
 ##Add user which have access only to subdirectory of existing user
@@ -60,7 +58,6 @@ Let's add **subdomainadmin** which have access to **/home/vsftpd/seconduser/subd
 echo "subdomainadmin:$(openssl passwd -1 password)" >> /conf/vsftpd/virtual_users
 mkdir /home/vsftpd/seconduser/subdomain2.com
 chown -R ftp:ftp /home/vsftpd/seconduser/subdomain2.com
-chmod -R 755 /home/vsftpd/seconduser/subdomain2.com
 echo "local_root=/home/vsftpd/seconduser/subdomain2.com" >> /conf/vsftpd/users_config/subdomainadmin
 ```
 
