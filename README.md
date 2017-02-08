@@ -46,6 +46,7 @@ mkdir /home/vsftpd/seconduser/
 Let's add **anotheruser** which have access to **/home/vsftpd/anotheruser/subdomain.com**
 ```
 echo "anotheruser:$(openssl passwd -1 password)" >> /conf/vsftpd/virtual_users
+mkdir /home/vsftpd/anotheruser/
 mkdir /home/vsftpd/anotheruser/subdomain.com
 echo "local_root=/home/vsftpd/anotheruser/subdomain.com" >> /conf/vsftpd/users_config/anotheruser
 ```
